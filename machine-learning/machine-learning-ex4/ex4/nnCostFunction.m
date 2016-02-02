@@ -47,7 +47,6 @@ for i = 1:m
 	X_i = X(i,:);
 	h_of_Xi = sigmoid( [1 sigmoid(X_i * Theta1')] * Theta2' );
 	
-	% if y = 5 then y_i = [0 0 0 0 1 0 0 0 0 0]
 	y_i = zeros(1,K);
 	y_i(y(i)) = 1;
 	

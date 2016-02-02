@@ -36,19 +36,14 @@ grad = zeros(size(theta));
 %           grad = grad + YOUR_CODE_HERE (using the temp variable)
 %
 
-% First calculate the unregularized cost (J) and gradient (grad) for logistic regression
-% (Taken straight from Coding Exercise 2 (costFunction.m))
 
 h_of_x = sigmoid(X * theta);
-J = 1 / m * sum( -1 * y' * log(h_of_x) - (1-y') * log(1 - h_of_x) );
-grad = 1 / m * (X' * (h_of_x - y));  %'
+J = 1 / m * sum(-1 * y' * log(h_of_x) - (1-y') * log(1 - h_of_x));
+grad = 1 / m * (X' * (h_of_x - y));
 
-% Next calculate the regularized cost (J) and gradient (grad) for logistic regression
-% (Taken straight from Coding Exercise 2 (costFunctionReg.m))
 
-% this effectively ignores "theta zero" in the following calculations
 theta_zeroed_first = [0; theta(2:length(theta));];
-J = J + lambda / (2 * m) * sum( theta_zeroed_first .^ 2 );
+J = J + lambda / (2 * m) * sum(theta_zeroed_first .^ 2);
 grad = grad + (lambda / m) * theta_zeroed_first;
 
 
